@@ -14,6 +14,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string remember_token
  * @property Carbon created_at
  * @property Carbon updated_at
+ *
  */
 class User extends Authenticatable
 {
@@ -39,4 +40,12 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    /**
+     * @return string
+     */
+    public function getGravatarAttribute()
+    {
+        return 'https://www.gravatar.com/avatar/' . md5(\mb_strtolower($this->email));
+    }
 }

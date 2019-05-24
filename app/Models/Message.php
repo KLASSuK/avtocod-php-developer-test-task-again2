@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Query\Builder as QueryBuilder;
 
 /**
  * Message model.
@@ -20,26 +20,24 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @method static QueryBuilder orderBy($column, $direction = 'asc')
  * @method static Builder findOrFail($id, $columns = ['*'])
+ * @method static Builder create(array $attributes = [])
  */
 class Message extends Model
 {
-    public const A1_CONST = 'asdsad';
-
     /**
      * {@inheritdoc}
      */
     protected $fillable = [
-        'title',
         'body',
         'id_owner',
     ];
 
-    /**
-     * {@inheritdoc}
-     */
-    protected $casts = [
-        'id_owner' => 'integer',
-    ];
+    //    /**
+    //     * {@inheritdoc}
+    //     */
+    //    protected $casts = [
+    //        'id_owner' => 'integer',
+    //    ];
 
     /**
      * User of current message.
