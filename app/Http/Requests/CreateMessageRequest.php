@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CreateMessageRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class CreateMessageRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -24,7 +25,21 @@ class CreateMessageRequest extends FormRequest
     public function rules()
     {
         return [
-            'body' => 'required|string|min:3',
+            'body' => 'required|string|min:3|regex:/^[a-z0-9]+$/i',
+        ];
+    }
+
+    /**
+     * Get error messages
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'body.required' => 'Поле обязательно для заполнения',
+            'body.min'      => 'Поле должно содержать не менее 3 символов',
+            'name.regex'    => 'Поле может содержать альфа-символы и цифры',
         ];
     }
 }

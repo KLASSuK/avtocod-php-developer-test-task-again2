@@ -32,12 +32,12 @@ class Message extends Model
         'id_owner',
     ];
 
-    //    /**
-    //     * {@inheritdoc}
-    //     */
-    //    protected $casts = [
-    //        'id_owner' => 'integer',
-    //    ];
+    /** Make_shure_id_owner = integer bcz have problem with button delete when check type and value of id and id_owner
+     * {@inheritdoc}
+     */
+    protected $casts = [
+        'id_owner' => 'integer',
+    ];
 
     /**
      * User of current message.

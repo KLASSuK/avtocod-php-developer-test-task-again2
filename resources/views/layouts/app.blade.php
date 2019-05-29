@@ -9,23 +9,24 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
           crossorigin="anonymous" />
+    @section('style')
+        <style type="text/css">
+            .user-avatar {
+                margin-top: 5px;
+                width: 100%;
+            }
 
-    <style type="text/css">
-        .user-avatar {
-            margin-top: 5px;
-            width: 100%;
-        }
+            .wall-message {
+                border: solid #eee;
+                border-width: 0 0 1px 0;
+                margin-bottom: 1em;
+            }
 
-        .wall-message {
-            border: solid #eee;
-            border-width: 0 0 1px 0;
-            margin-bottom: 1em;
-        }
-
-        .wall-message:last-child {
-            border-width: 0;
-        }
-    </style>
+            .wall-message:last-child {
+                border-width: 0;
+            }
+        </style>
+    @show
 
     @section('title_of_page')
         <title>Стена сообщений | Главная страница</title>
@@ -39,7 +40,6 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="{{ url('/') }}">Avtocod | Стена сообщений</a>
         </div>
-
         @section('active tab and username plus exit')
             <ul class="nav navbar-nav">
                 @guest
@@ -50,6 +50,7 @@
                     @endif
                 @else
             </ul>
+
             <ul class="nav navbar-nav navbar-right">
                 <li class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{ Auth::user()->name }}</li>
                 <li><a class="logout-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -65,7 +66,6 @@
     </div>
 </nav>
 @section('content')
-
     <div class="container">
         <div class="page-header">
             <h1>Сообщения от всех пользователей</h1>

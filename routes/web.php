@@ -8,8 +8,11 @@ Auth::routes();
 Route::get('/', 'MessagesController@index')
     ->name('index');
 
-Route::post('/', 'MessagesController@addmessage')
-    ->name('messages.addmessage');
+Route::post('/', 'MessagesController@addMessage')
+    ->name('messages.addMessage');
 
-Route::delete('/delete/{id}', 'MessagesController@delete')
-    ->name('messages.delete');
+Route::delete('/delete/{id}', 'MessagesController@deleteMessage')
+    ->name('messages.deleteMessage');
+
+Route::get('/regsuccess', 'MessagesController@regSuccess')
+    ->name('regSuccess');
