@@ -1,16 +1,13 @@
 @extends('layouts.app')
-
 @section('title_of_page')
     <title>Стена сообщений | Главная страница</title>
 @endsection
-
 @section('content')
     <div class="container">
         <div class="page-header">
             <h1>Сообщения от всех пользователей</h1>
         </div>
-
-        @if(Auth::check() )
+        @if(Illuminate\Support\Facades\Auth::check() )
             <form method="post" action="{{route('messages.addMessage')}}" class="form-horizontal"
                   accept-charset="UTF-8">
                 @csrf
@@ -25,7 +22,6 @@
                         </ul>
                     </div>
                 @endif
-
                 <div class="controls">
                     <div class="col-md-12">
 
@@ -42,7 +38,6 @@
                 </div>
             </form>
         @endif
-
         @foreach ($messages as $message)
             <div class="row wall-message">
                 <div class="col-md-1 col-xs-2">
@@ -52,7 +47,7 @@
                     <blockquote>
                         {{ $message->body }}
                         <div>
-                            @if(Auth::check() && $message->id_owner === Auth::user()->id)
+                            @if(Illuminate\Support\Facades\Auth::check() && $message->id_owner === \Illuminate\Support\Facades\Auth::user()->id)
                                 <a>
                                     <form method="POST" action="{{ route('messages.deleteMessage',$message) }}">
                                         {{ csrf_field() }}

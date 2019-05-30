@@ -25,7 +25,7 @@ class CreateMessageRequest extends FormRequest
     public function rules()
     {
         return [
-            'body' => 'required|string|min:3|regex:/^[a-z0-9]+$/i',
+            'body' => 'required|string|min:3|max:32767|regex:/^[a-z0-9]+$/i',
         ];
     }
 
@@ -39,6 +39,7 @@ class CreateMessageRequest extends FormRequest
         return [
             'body.required' => 'Поле обязательно для заполнения',
             'body.min'      => 'Поле должно содержать не менее 3 символов',
+            'name.max'      => 'Поле должно содержать не более 32767 символов',
             'name.regex'    => 'Поле может содержать альфа-символы и цифры',
         ];
     }
