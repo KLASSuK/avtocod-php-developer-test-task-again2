@@ -56,7 +56,7 @@ class MessagesController extends Controller
     }
 
     /**
-     * reg_success_page
+     * registration success page
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

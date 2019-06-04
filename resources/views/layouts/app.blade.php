@@ -27,14 +27,11 @@
             }
         </style>
     @show
-
     @section('title_of_page')
         <title>Стена сообщений | Главная страница</title>
     @show
-
 </head>
 <body>
-
 <nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
@@ -45,14 +42,15 @@
                 @guest
                     <li class="active"><a href="{{ route('index') }}">Главная</a></li>
                     <li><a href="{{ route('login') }}">Авторизация</a></li>
-                    @if (Route::has('register'))
+                    @if (Illuminate\Support\Facades\Route::has('register'))
                         <li><a href="{{ route('register') }}">Регистрация</a></li>
                     @endif
                 @else
             </ul>
-
             <ul class="nav navbar-nav navbar-right">
-                <li class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{ Auth::user()->name }}</li>
+                <li class="navbar-text"><span
+                        class="glyphicon glyphicon-user"></span> {{ Illuminate\Support\Facades\Auth::user()->name }}
+                </li>
                 <li><a class="logout-item" href="{{ route('logout') }}" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
                         <span class="glyphicon glyphicon-log-out"></span> {{ __('Выход') }}</a></li>
@@ -62,7 +60,6 @@
                 @endguest
             </ul>
         @show
-
     </div>
 </nav>
 @section('content')
@@ -72,7 +69,6 @@
         </div>
     </div>
 @show
-
 @section('scripts')
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
