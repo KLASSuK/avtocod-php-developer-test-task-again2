@@ -10,7 +10,7 @@
             записью.</p>
     </div>
 @endsection
-@section('active_tab')
+@section('active tab and username plus exit')
     <ul class="nav navbar-nav">
         @guest
             <li><a href="{{ route('index') }}">Главная</a></li>

@@ -29,18 +29,21 @@ class MessagesControllerTest extends TestCase
         $this->user = User::inRandomOrder()->first();
     }
 
+    /**
+     * test of work index page and we can see "home" view and H1 tag.
+     */
     public function testIndex(): void
     {
         $response = $this
-            //->actingAs($this->user)
+            ->actingAs($this->user)
             ->get('/');
-
-        //$response->assertSee('kjkjk');
         $response->assertViewIs('home');
-//                $response->assertSee($this->user->name);
         $response->assertSeeText('Сообщения от всех пользователей');
     }
 
+    /**
+     * test add message
+     */
     public function testAddMessage(): void
     {
         Session::start();
@@ -63,7 +66,6 @@ class MessagesControllerTest extends TestCase
             'id_owner' => $this->user->id,
             'body'     => $body,
         ]);
-
         // Clean up
         foreach ($messages as $message) {
             $message->delete();
@@ -72,7 +74,6 @@ class MessagesControllerTest extends TestCase
 
     /**
      * test Delete message
-     * add
      */
     public function testDeleteMessage(): void
     {
