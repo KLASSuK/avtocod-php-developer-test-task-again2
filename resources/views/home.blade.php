@@ -41,7 +41,9 @@
         @foreach ($messages as $message)
             <div class="row wall-message">
                 <div class="col-md-1 col-xs-2">
-                    <img src="{{ $message->user->gravatar }}" alt="gravatar" class="img-circle user-avatar" /></div>
+                    <img
+                        src="{{ Avatar::getAvatarUrl($message->user->email) }}"
+                        alt="gravatar" class="img-circle user-avatar" /></div>
                 <div class="col-md-11 col-xs-10">
                     <p><strong>{{ $message->user->name }}:</strong></p>
                     <blockquote>
